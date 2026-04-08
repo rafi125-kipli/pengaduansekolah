@@ -22,8 +22,8 @@
     </div>
 
     <div style="margin-top:16px;">
-        <form method="GET" action="{{ route('admin.dashboard') }}" style="display:flex; flex-wrap:wrap; gap:12px; align-items:flex-end;">
-            <div style="min-width:180px;">
+        <form method="GET" action="{{ route('admin.dashboard') }}" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap:12px; align-items:end;">
+            <div style="display:flex; flex-direction:column; gap:6px;">
                 <label for="status">Filter Status</label>
                 <select name="status" id="status">
                     <option value="">Semua Status</option>
@@ -32,7 +32,7 @@
                     <option value="Selesai" {{ ($filterStatus ?? '') === 'Selesai' ? 'selected' : '' }}>Selesai</option>
                 </select>
             </div>
-            <div style="min-width:180px;">
+            <div style="display:flex; flex-direction:column; gap:6px;">
                 <label for="id_kategori">Filter Kategori</label>
                 <select name="id_kategori" id="id_kategori">
                     <option value="">Semua Kategori</option>
@@ -41,22 +41,20 @@
                     @endforeach
                 </select>
             </div>
-            <div style="min-width:180px;">
+            <div style="display:flex; flex-direction:column; gap:6px;">
                 <label for="nis">Cari NIS</label>
                 <input type="text" name="nis" id="nis" value="{{ $filterNis ?? '' }}" placeholder="1234567890">
             </div>
-            <div style="min-width:180px;">
+            <div style="display:flex; flex-direction:column; gap:6px;">
                 <label for="start_date">Dari Tanggal</label>
                 <input type="date" name="start_date" id="start_date" value="{{ $filterStartDate ?? '' }}">
             </div>
-            <div style="min-width:180px;">
+            <div style="display:flex; flex-direction:column; gap:6px;">
                 <label for="end_date">Sampai Tanggal</label>
                 <input type="date" name="end_date" id="end_date" value="{{ $filterEndDate ?? '' }}">
             </div>
-            <div>
+            <div style="display:flex; gap:8px; justify-content:flex-start; align-items:center; grid-column: 1 / -1; margin-top: 12px;">
                 <button type="submit">Terapkan</button>
-            </div>
-            <div>
                 <a href="{{ route('admin.dashboard') }}"><button type="button" style="background:#6b7280;">Reset</button></a>
             </div>
         </form>

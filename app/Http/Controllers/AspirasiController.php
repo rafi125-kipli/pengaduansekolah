@@ -33,7 +33,6 @@ class AspirasiController extends Controller
             ['kelas' => $data['kelas']]
         );
 
-        // Store foto
         if ($request->hasFile('foto')) {
             $file = $request->file('foto');
             $filename = time() . '_' . $file->getClientOriginalName();
