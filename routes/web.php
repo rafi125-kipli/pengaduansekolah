@@ -23,5 +23,8 @@ Route::post('/admin/aspirasi/{id}', [AspirasiController::class, 'update'])->name
 
 Route::get('/admin/kategoris', [KategoriController::class, 'index'])->name('admin.kategoris.index');
 Route::post('/admin/kategoris', [KategoriController::class, 'store'])->name('admin.kategoris.store');
+Route::get('/admin/kategoris/{id_kategori}/edit', [KategoriController::class, 'edit'])->name('admin.kategoris.edit');
+Route::post('/admin/kategoris/{id_kategori}', [KategoriController::class, 'update'])->name('admin.kategoris.update');
+Route::post('/admin/kategoris/{id_kategori}/delete', [KategoriController::class, 'destroy'])->name('admin.kategoris.delete');
 
 Route::get('/siswa/history', [AspirasiController::class, 'siswaHistory'])->name('siswa.history');

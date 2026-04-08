@@ -33,6 +33,7 @@
             <tr>
                 <th>No</th>
                 <th>Kategori</th>
+                <th>Aksi</th>
             </tr>
         </thead>
         <tbody>
@@ -40,10 +41,17 @@
             <tr>
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $kategori->ket_kategori }}</td>
+                <td>
+                    <a href="{{ route('admin.kategoris.edit', $kategori->id_kategori) }}"><button style="background:#2563eb; padding: 4px 8px; font-size: 12px;">Edit</button></a>
+                    <form method="POST" action="{{ route('admin.kategoris.delete', $kategori->id_kategori) }}" style="display:inline;" onsubmit="return confirm('Yakin ingin menghapus kategori ini?');">
+                        @csrf
+                        <button type="submit" style="background:#dc2626; padding: 4px 8px; font-size: 12px;">Hapus</button>
+                    </form>
+                </td>
             </tr>
             @empty
             <tr>
-                <td colspan="2">Belum ada kategori.</td>
+                <td colspan="3">Belum ada kategori.</td>
             </tr>
             @endforelse
         </tbody>
