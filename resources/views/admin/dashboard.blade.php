@@ -89,6 +89,7 @@
                 <th>Kategori</th>
                 <th>Lokasi</th>
                 <th>Keterangan</th>
+                <th>Foto</th>
                 <th>Status</th>
                 <th>Feedback</th>
                 <th>Aksi</th>
@@ -103,6 +104,15 @@
                 <td>{{ $aspirasi->inputAspirasi->kategori->ket_kategori ?? '-' }}</td>
                 <td>{{ $aspirasi->inputAspirasi->lokasi }}</td>
                 <td>{{ $aspirasi->inputAspirasi->ket }}</td>
+                <td>
+                    @if($aspirasi->inputAspirasi->foto)
+                    <a href="{{ asset('storage/aspirasi/' . $aspirasi->inputAspirasi->foto) }}" target="_blank" class="link">
+                        <img src="{{ asset('storage/aspirasi/' . $aspirasi->inputAspirasi->foto) }}" alt="Bukti Foto" style="max-width: 50px; max-height: 50px; cursor: pointer;">
+                    </a>
+                    @else
+                    <span style="color: #999;">-</span>
+                    @endif
+                </td>
                 <td>
                     <span class="badge {{ $aspirasi->status === 'Selesai' ? 'badge-success' : ($aspirasi->status === 'Proses' ? 'badge-info' : 'badge-warning') }}">
                         {{ $aspirasi->status }}

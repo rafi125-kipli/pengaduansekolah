@@ -5,7 +5,7 @@
 @section('content')
 <div class="card">
     <h1>Selamat Datang di Sistem Pengaduan Sekolah</h1>
-    <p>Gunakan form aspirasi untuk melaporkan masalah atau saran di lingkungan sekolah.</p>
+    <p>Gunakan form aspirasi ini untuk melaporkan masalah atau saran yang ada di lingkungan sekolah</p>
     <p>
         <a href="{{ route('aspirasi.create') }}"><button>Kirim Aspirasi</button></a>
         <a href="{{ route('siswa.history') }}"><button style="background:#f59e0b;">Histori Siswa</button></a>

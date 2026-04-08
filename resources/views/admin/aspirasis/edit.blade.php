@@ -9,10 +9,6 @@
             <h1>Proses Aspirasi</h1>
             <p>Perbarui status dan feedback aspirasi.</p>
         </div>
-        <form method="POST" action="{{ route('admin.logout') }}">
-            @csrf
-            <button type="submit">Logout</button>
-        </form>
     </div>
 
     <div style="margin-top:16px;">
@@ -21,6 +17,17 @@
         <p><strong>Kategori:</strong> {{ $aspirasi->inputAspirasi->kategori->ket_kategori ?? '-' }}</p>
         <p><strong>Lokasi:</strong> {{ $aspirasi->inputAspirasi->lokasi }}</p>
         <p><strong>Keterangan:</strong> {{ $aspirasi->inputAspirasi->ket }}</p>
+        <p><strong>Bukti Foto:</strong>
+            @if($aspirasi->inputAspirasi->foto)
+        <div style="margin-top: 8px;">
+            <a href="{{ asset('storage/aspirasi/' . $aspirasi->inputAspirasi->foto) }}" target="_blank">
+                <img src="{{ asset('storage/aspirasi/' . $aspirasi->inputAspirasi->foto) }}" alt="Bukti Foto" style="max-width: 300px; max-height: 300px; border: 1px solid #ddd; border-radius: 4px;">
+            </a>
+        </div>
+        @else
+        -
+        @endif
+        </p>
     </div>
 
     <form method="POST" action="{{ route('admin.aspirasi.update', $aspirasi->id_aspirasi) }}" style="margin-top:16px;">

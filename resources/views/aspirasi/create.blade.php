@@ -17,7 +17,7 @@
     </div>
     @endif
 
-    <form method="POST" action="{{ route('aspirasi.store') }}">
+    <form method="POST" action="{{ route('aspirasi.store') }}" enctype="multipart/form-data">
         @csrf
         <label for="nis">NIS</label>
         <input type="text" name="nis" id="nis" value="{{ old('nis') }}" placeholder="Masukkan NIS 10 digit" maxlength="10" required>
@@ -40,6 +40,10 @@
 
         <label for="ket">Keterangan</label>
         <textarea name="ket" id="ket" rows="4" maxlength="50" required>{{ old('ket') }}</textarea>
+
+        <label for="foto">Foto Bukti</label>
+        <input type="file" name="foto" id="foto" accept="image/*" required>
+        <small>Format: JPG, PNG, JPEG. Ukuran maksimal: 2MB</small>
 
         <button type="submit">Kirim Aspirasi</button>
     </form>

@@ -25,6 +25,7 @@ class AspirasiController extends Controller
             'id_kategori' => 'required|integer|exists:kategoris,id_kategori',
             'lokasi' => 'required|string|max:50',
             'ket' => 'required|string|max:50',
+            'foto' => 'required|image|max:2048',
         ]);
 
         $siswa = Siswa::updateOrCreate(
@@ -32,11 +33,20 @@ class AspirasiController extends Controller
             ['kelas' => $data['kelas']]
         );
 
+        // Store foto
+        if ($request->hasFile('foto')) {
+            $file = $request->file('foto');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->storeAs('aspirasi', $filename, 'public');
+            $data['foto'] = $filename;
+        }
+
         $inputAspirasi = InputAspirasi::create([
             'nis' => $siswa->nis,
             'id_kategori' => $data['id_kategori'],
             'lokasi' => $data['lokasi'],
             'ket' => $data['ket'],
+            'foto' => $data['foto'],
         ]);
 
         Aspirasi::create([

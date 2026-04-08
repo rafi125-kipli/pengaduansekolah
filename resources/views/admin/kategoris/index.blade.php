@@ -9,10 +9,6 @@
             <h1>Kelola Kategori</h1>
             <p>Tambahkan kategori baru untuk aspirasi siswa.</p>
         </div>
-        <form method="POST" action="{{ route('admin.logout') }}">
-            @csrf
-            <button type="submit">Logout</button>
-        </form>
     </div>
 
     @if ($errors->any())
